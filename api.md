@@ -203,9 +203,6 @@ body
 ```
 #### `POST /students`
 ##### request
-
-header: `Cookie: session_id`
-
 body
 ```
 {

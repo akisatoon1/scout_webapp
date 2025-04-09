@@ -29,8 +29,13 @@
 [名前, 学生へのリンク]
 
 ## api仕様
+基本的にCookie Headerでsession idを送る
 ### 募集
 #### `GET /recruitments`
+##### response
+status code: `200`
+
+body
 ```
 [
     {
@@ -42,8 +47,43 @@
 ]
 ```
 #### `POST /recruitments`
-reponseは下に同じ
+##### request
+
+header: `Cookie: session_id`
+
+body
+```
+{
+    "title": "募集のタイトル",
+    "": "募集要項",
+    "company": {
+        "name": "会社の名前",
+    }
+}
+```
+
+##### reponse
+
+status code: `201`
+
+body
+```
+{
+    "title": "募集のタイトル",
+    "": "募集要項",
+    "created_at": "作成日時",
+    "company": {
+        "name": "会社の名前",
+        "link": "会社情報へのurl"
+    }
+}
+```
 #### `GET /recruitments/{recruitment_id}`
+##### response
+
+status code: `200`
+
+body
 ```
 {
     "title": "募集のタイトル",
@@ -58,6 +98,15 @@ reponseは下に同じ
 
 ### チャット
 #### `GET /chats`
+##### request
+
+header: `Cookie: session_id`
+
+##### response
+
+status code: `200`
+
+body
 ```
 {
     "type": "company" or "student",
@@ -72,6 +121,13 @@ reponseは下に同じ
 }
 ```
 #### `GET /chats/{chat_id}`
+##### request
+header: `Cookie: session_id`
+
+##### response
+status code: `200`
+
+body
 ```
 {
     "type": "company" or "student",
@@ -93,6 +149,22 @@ reponseは下に同じ
 }
 ```
 #### `POST /chats/{chat_id}/messages`
+##### request
+
+header: `Cookie: session_id`
+
+body
+```
+{
+    "content": "メッセージ本文"
+}
+```
+
+##### response
+
+status code: `201`
+
+body
 ```
 {
     "content": "略",
@@ -101,9 +173,12 @@ reponseは下に同じ
 ```
 
 ### 会社
-#### `POST /companies`
-responseは下に同じ
 #### `GET /companies/{company_id}`
+##### response
+
+status code: `200`
+
+body
 ```
 {
     "name": "略"
@@ -112,6 +187,11 @@ responseは下に同じ
 
 ### 学生
 #### `GET /students`
+##### response
+
+status code: `200`
+
+body
 ```
 [
     {
@@ -122,8 +202,35 @@ responseは下に同じ
 ]
 ```
 #### `POST /students`
-responseは下に同じ
+##### request
+
+header: `Cookie: session_id`
+
+body
+```
+{
+    "user_id": "ログイン用ユーザid",
+    "name": "生徒の名前"
+}
+```
+
+##### response
+
+status code: `201`
+
+body
+```
+{
+    "name": "生徒の名前",
+    "created_at": "作成日時"
+}
+```
 #### `GET /students/{student_id}`
+##### response
+
+status code: `200`
+
+body
 ```
 {
     "name": "略"

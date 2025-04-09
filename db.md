@@ -4,19 +4,19 @@
 
 ## companies
 - id         int primary key autoincrement
-- user_id    text
+- login_id    text
 - password   text
 - name       text
 - created_at text
-unique(user_id)
+unique(login_id)
 
 ## students
 - id         int primary key autoincrement
-- user_id    text
+- login_id    text
 - password   text
 - name       text
 - created_at text
-unique(user_id)
+unique(login_id)
 
 ## chats
 - id         int primary key autoincrement

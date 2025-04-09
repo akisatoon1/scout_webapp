@@ -209,7 +209,7 @@ header: `Cookie: session_id`
 body
 ```
 {
-    "user_id": "ログイン用ユーザid",
+    "login_id": "ログイン用ユーザid",
     "name": "生徒の名前"
 }
 ```
